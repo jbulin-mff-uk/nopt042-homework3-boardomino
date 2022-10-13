@@ -1,0 +1,17 @@
+parse_input(Args, Digits, Words) =>    
+    AllLetters = map(to_uppercase, Args[1] ++ Args[2] ++ Args[3]),
+    StringToParse = "[",
+    foreach(I in 1..length(AllLetters))
+        StringToParse := StringToParse ++ [AllLetters[I]],
+        if I < length(AllLetters) then
+            StringToParse := StringToParse ++ [',']
+        else
+            StringToParse := StringToParse ++ [']']
+        end
+    end,
+    ParsedList = parse_term(StringToParse),    
+    Digits = remove_dups(ParsedList),
+    Words = [Word1, Word2, Word3],
+    Word1 = slice(ParsedList, 1, Args[1].length),  
+    Word2 = slice(ParsedList, Args[1].length + 1, Args[1].length + Args[2].length),
+    Word3 = slice(ParsedList, Args[1].length + Args[2].length + 1, ParsedList.length).
