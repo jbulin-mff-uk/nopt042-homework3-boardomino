@@ -1,25 +1,14 @@
-# Homework 2 - crypt-arithmetic
+# Homework 3 - boardomino
 
-1. Write a program that accepts a general crypt-arithmetic puzzle on the input and outputs a solution as a string where letters are replaced by digits, e.g.
-```
-picat crypt-arithmetic.pi SEND MORE MONEY
-```
-should output `9567 + 1085 = 10652` (since this is the only solution). Don't forget to include the spaces.
+In the _boardomino_ puzzle, the goal is to cover an $n\times n$ chess board with some fields missing by domino tiles, if it is possible. The input is given by a positive integer $n$ (the size of the board) and a list of pairs (2-element arrays) of missing fields. If a covering exists, output "yes" and some reasonable representation of it. Else, the output should contain the word "failed" (e.g. the standard message of the cp solver).
 
-2. Ignore case, e.g. accept also:
-```
-picat crypt-arithmetic.pi Donald Gerard Robert
-picat crypt-arithmetic.pi baijjajiiahfcfebbjea dhfgabcdidbiffagfeje gjegacddhfafjbfiheef
-```
-(source of the last instance: [Hakan Kjellerstrand's library](http://www.hakank.org/), may run for a long time)
+Here are some sample instances (the first one is unsatisfiable):
 
-2. Modify your program to accept the flag `-c` to output the number of solutions instead, e.g.
 ```
-picat crypt-arithmetic.pi -c send more money
-picat crypt-arithmetic.pi -c aa aa bb 
+picat boardomino.pi 4 "[{1,1},{4,4}]"
+picat boardomino.pi 8 "[{1,1},{1,2}]"
+picat boardomino.pi 8 "[{1,1},{8,8}]"
 ```
-should output `1` and `4`.
+Try different models and solvers and choose the best option based on the performance on the unsatisfiable instances of the form `n [{1,1},{n,n}]`. (Your program should not be much slower than the best one.)
 
-Your model must be reasonably efficient, e.g. use the carry bit implementation.
-
-See the assignment on GitHub Classroom. See `parse-input.pi` for code that you can use to parse the input.
+NOTE: If you use the mip solver, all tests will fail (as the external MIP solver won't be found).
