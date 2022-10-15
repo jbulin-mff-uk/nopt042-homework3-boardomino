@@ -11,4 +11,4 @@ picat boardomino.pi 8 "[{1,1},{8,8}]"
 ```
 Try different models and solvers and choose the best option based on the performance on the unsatisfiable instances of the form `n [{1,1},{n,n}]`. (Your program should not be much slower than the best one.)
 
-NOTE: If you use the mip solver, all tests will fail (as the external MIP solver won't be found).
+UPDATED NOTE: Using the mip solver will no longer fail all your tests, they should be checked correctly.
